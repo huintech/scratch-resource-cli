@@ -19,7 +19,7 @@ const parseArgs = require('../src/parseArgs');
 const USEFUL_LIB_FILE_EXTENSIONS = ['.c', '.cpp', '.h', '.hpp', '.py'];
 
 // Useless files or folder names
-const USELESS_FILES_AND_DIR = ['.git', '.github', '.gitignore'];
+const USELESS_FILES_AND_DIR = ['.git', '.github', '.gitignore', 'translations'];
 
 // walkFunc must be async, or return a Promise
 const delUselessLibFilesAndDirs = (err, pathName, dirent) => {

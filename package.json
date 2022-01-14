@@ -6,13 +6,13 @@
   "bin": {
     "gen-hash": "./bin/gen-hash-file.js",
     "gen-config": "./bin/gen-config.js",
-    "opt-size": "./bin/optimization-size.js",
+    "opt-size": "./bin/optimize-size.js",
     "i18n-extract": "./i18n/extract-format-message.js",
     "i18n-push": "./i18n/push-format-message.js",
     "i18n-update": "./i18n/update-translations.js"
   },
   "scripts": {
-    "test:opt-size": "node bin/optimization-size.js --dir=external-resources",
+    "test:opt-size": "node bin/optimize-size.js --dir=external-resources",
     "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.2 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/",
     "test:gen-hash": "node bin/gen-hash-file.js --dir=external-resources",
     "test:i18n-extract": "node i18n/extract-format-message.js  --dir=external-resources",
