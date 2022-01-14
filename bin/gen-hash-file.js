@@ -11,7 +11,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const {calcDirHash} = require('../src/calc-dir-hash');
-const parseArgs = require('../script/parseArgs');
+const parseArgs = require('../src/parseArgs');
 
 
 const {dir} = parseArgs();
