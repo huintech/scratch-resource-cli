@@ -13,7 +13,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const parseArgs = require('../script/parseArgs');
+const parseArgs = require('../src/parseArgs');
 
 
 const {dir, version, repo, cdn} = parseArgs();
