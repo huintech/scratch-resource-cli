@@ -1,6 +1,6 @@
 {
   "name": "openblock-resource-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "External resources cli tools for OpenBlock projects",
   "main": "",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test:opt-size": "node bin/optimization-size.js --dir=external-resources",
-    "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.1 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/",
+    "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.2 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/",
     "test:gen-hash": "node bin/gen-hash-file.js --dir=external-resources",
     "test:i18n-extract": "node i18n/extract-format-message.js  --dir=external-resources",
     "test:i18n-push": "node i18n/push-format-message.js --dir=external-resources",

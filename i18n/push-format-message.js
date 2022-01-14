@@ -12,7 +12,6 @@ const {execSync} = require('child_process');
 const path = require('path');
 const parseArgs = require('../src/parseArgs');
 
-
 const {dir} = parseArgs();
 
 let workDir;
@@ -35,8 +34,9 @@ const runCliSync = cmd => {
     }
 };
 
-const pushBlocksContent = `tx-push-src openblock-resources blocks ${path.resolve(workDir)}/translations/blocks/en.json`;
-const pushInterfaceContent = `tx-push-src openblock-resources interface ${path.resolve(workDir)}/translations/interface/en.json`; // eslint-disable-line max-len
+const txPushSrc = path.resolve(__dirname, '../node_modules/openblock-l10n/scripts/tx-push-src.js');
+const pushBlocksContent = `node ${txPushSrc} openblock-resources blocks ${path.resolve(workDir)}/translations/blocks/en.json`; // eslint-disable-line max-len
+const pushInterfaceContent = `node ${txPushSrc} openblock-resources interface ${path.resolve(workDir)}/translations/interface/en.json`; // eslint-disable-line max-len
 
 runCliSync(pushBlocksContent);
 runCliSync(pushInterfaceContent);
