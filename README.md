@@ -11,11 +11,9 @@ Provide some cli tools for resource translation and pre-process before release.
 
   - **opt-size** used to delete useless files to reduce the expansion size
 
-  - **gen-config** used to generate a configuration file that records the update parameters
+  - **gen-config** used to generate a configuration file that records the update parameters and folder hash
 
       eg: `gen-config --version=v0.0.1 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/`
-
-  - **gen-hash** used to generate the hash of the external-resource folder to verify the integrity of the content after copying the folder to the cache
 
 - Translation tools
 

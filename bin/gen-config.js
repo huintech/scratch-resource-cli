@@ -13,6 +13,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const {calcDirHash} = require('../src/calc-dir-hash');
 const parseArgs = require('../src/parseArgs');
 
 
@@ -32,8 +33,15 @@ if (version) {
         workDir = './';
     }
 
-    fs.writeFileSync(path.resolve(workDir, 'config.json'), JSON.stringify(resourceConfig, null, 4));
-    console.log(`Config file is created: ${path.resolve(workDir, 'config.json')}`);
+    calcDirHash(workDir).then(hash => {
+        resourceConfig.repo = repo;
+        resourceConfig.version = version;
+        resourceConfig.cdn = cdn;
+        resourceConfig.sha256 = hash;
+
+        fs.writeFileSync(path.resolve(workDir, 'config.json'), JSON.stringify(resourceConfig, null, 4));
+        console.log(`Config file is created: ${path.resolve(workDir, 'config.json')}`);
+    });
 } else {
     console.error('No version specified');
 }
