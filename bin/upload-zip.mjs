@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * @fileoverview
  * Upload a file to.digital ocean spaces.

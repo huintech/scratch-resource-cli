@@ -22,3 +22,8 @@ Provide some cli tools for resource translation and pre-process before release.
   - **i18n-push** used to push the extracted i18n content to transifex
 
   - **i18n-update** used to pull the translation content on transifex, generate and update the local translation file
+
+- Release tools
+
+  - **upload-note** used to fetch latest release note and upload it to digital ocean spaces. Used in updates in China.
+  - **upload-zip** used to upload a zip to digital ocean spaces. Used in updates in China.

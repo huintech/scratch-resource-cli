@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * @fileoverview
  * Fetch the latest release note and upload it to.digital ocean spaces.
