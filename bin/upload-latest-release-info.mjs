@@ -2,13 +2,13 @@
 
 /**
  * @fileoverview
- * Fetch the latest release note and upload it to.digital ocean spaces.
+ * Fetch the latest release info and upload it to digital ocean spaces.
  */
 import fetch from 'node-fetch';
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
 // import {Buffer} from 'buffer';
 
-const FILE_PATH = 'resource/latestReleaseNotes.txt';
+const FILE_PATH = 'resource/latestRelease.json';
 const REPO = 'openblockcc/external-resources-v2';
 
 const s3Client = new S3({
@@ -36,16 +36,18 @@ const getLatest = () => {
 
 getLatest().then(data => {
     try {
-        console.log(`Upload release note to ${bucketParams.Bucket}/${bucketParams.Key}`);
-        s3Client.send(new PutObjectCommand(bucketParams(data.body))).then(() => {
+        data = JSON.stringify(data, null, 4);
+        console.log(`Upload release note to ${bucketParams(data).Bucket}/${bucketParams(data).Key}`);
+        s3Client.send(new PutObjectCommand(bucketParams(data))).then(() => {
             console.log(
                 `Successfully uploaded object: ${
-                    bucketParams(data.body).Bucket
+                    bucketParams(data).Bucket
                 }/${
-                    bucketParams(data.body).Key}`
+                    bucketParams(data).Key}`
             );
         });
     } catch (err) {
         console.log('Error', err);
+        process.exit(1);
     }
 });

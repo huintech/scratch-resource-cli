@@ -6,8 +6,6 @@
  *
  * The default scan path is the path where the current command is executed,
  * but you can use --dir to specify the download address, e.g: --dir=external-resources
- * use --repo to specify the download address, e.g: --repo=openblockcc/external-resources
- * use --cdn to specify the use of the cdn proxy server address, e.g: --cdn=https://cdn.openblock.cc/
  * use --version to specify the version, e.g: --version=v0.0.1
  */
 
@@ -17,15 +15,9 @@ const {calcDirHash} = require('../src/calc-dir-hash');
 const parseArgs = require('../src/parseArgs');
 
 
-const {dir, version, repo, cdn} = parseArgs();
+const {dir, version} = parseArgs();
 
 if (version) {
-    const resourceConfig = {};
-
-    resourceConfig.repo = repo;
-    resourceConfig.version = version;
-    resourceConfig.cdn = cdn;
-
     let workDir;
     if (dir) {
         workDir = dir;
@@ -34,14 +26,15 @@ if (version) {
     }
 
     calcDirHash(workDir).then(hash => {
-        resourceConfig.repo = repo;
-        resourceConfig.version = version;
-        resourceConfig.cdn = cdn;
-        resourceConfig.sha256 = hash;
+        const originConfig = JSON.parse(fs.readFileSync(path.resolve(workDir, 'config.json'), 'utf8'));
 
-        fs.writeFileSync(path.resolve(workDir, 'config.json'), JSON.stringify(resourceConfig, null, 4));
+        originConfig.version = version;
+        originConfig.sha256 = hash;
+
+        fs.writeFileSync(path.resolve(workDir, 'config.json'), JSON.stringify(originConfig, null, 4));
         console.log(`Config file is created: ${path.resolve(workDir, 'config.json')}`);
     });
 } else {
     console.error('No version specified');
+    process.exit(1);
 }

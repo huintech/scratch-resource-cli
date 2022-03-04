@@ -11,9 +11,9 @@ Provide some cli tools for resource translation and pre-process before release.
 
   - **opt-size** used to delete useless files to reduce the expansion size
 
-  - **gen-config** used to generate a configuration file that records the update parameters and folder hash
+  - **gen-config** used to rewrite the configuration file that records the update parameters and folder hash
 
-      eg: `gen-config --version=v0.0.1 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/`
+      eg: `gen-config --version=v0.0.1`
 
 - Translation tools
 
@@ -25,5 +25,5 @@ Provide some cli tools for resource translation and pre-process before release.
 
 - Release tools
 
-  - **upload-note** used to fetch latest release note and upload it to digital ocean spaces. Used in updates in China.
+  - **upload-releaseInfo** used to fetch latest release info and upload it to digital ocean spaces. Used in updates in China.
   - **upload-zip** used to upload a zip to digital ocean spaces. Used in updates in China.

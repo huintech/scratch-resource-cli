@@ -48,4 +48,5 @@ try {
     });
 } catch (err) {
     console.log('Error', err);
+    process.exit(1);
 }
