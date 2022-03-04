@@ -3,7 +3,7 @@
 /**
  * @fileoverview
  * Upload a file to.digital ocean spaces.
- * use --filePath to specify the file path, e.g: --filePath=external-resources.zip
+ * use --filePath to specify the file path, e.g: --filePath=test.zip
  */
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
 import fs from 'fs';
