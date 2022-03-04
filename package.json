@@ -1,6 +1,6 @@
 {
   "name": "openblock-resource-cli",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "External resources cli tools for OpenBlock projects",
   "main": "",
   "bin": {
@@ -13,6 +13,8 @@
   "scripts": {
     "test:opt-size": "node bin/optimize-size.js --dir=external-resources",
     "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.2 --repo=openblockcc/external-resources --cdn=https://cdn.openblock.cc/",
+    "test:upload-note": "node --harmony bin/upload-release-note-to-spaces.mjs",
+    "test:upload-zip": "node --harmony bin/upload-zip.mjs --filePath=external-resources.zip",
     "test:i18n-extract": "node i18n/extract-format-message.js  --dir=external-resources",
     "test:i18n-push": "node i18n/push-format-message.js --dir=external-resources",
     "test:i18n-update": "node i18n/update-translations.js  --dir=external-resources",
@@ -22,12 +24,15 @@
   "author": "ArthurZheng",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.53.1",
     "@root/walk": "^1.1.0",
+    "cli-color": "^2.0.1",
     "extract-zip": "^2.0.1",
     "folder-hash": "^4.0.1",
     "format-message-parse": "^6.2.3",
     "fs-extra": "^10.0.0",
     "hash-files": "^1.1.1",
+    "node-fetch": "^3.2.1",
     "openblock-l10n": "^3.10.20220105060755",
     "rimraf": "^3.0.2",
     "transifex": "^1.6.6"
