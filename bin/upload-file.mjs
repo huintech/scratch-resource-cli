@@ -4,6 +4,8 @@
  * @fileoverview
  * Upload a file to.digital ocean spaces.
  * use --filePath to specify the file path, e.g: --filePath=test.zip
+ * use --endPoint to specify address of digital ocean spaces, e.g: --endPoint=https://sgp1.digitaloceanspaces.com
+ * use --bucket to specify the bucket name, e.g: --bucket=openblock
  */
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
 import fs from 'fs';
@@ -13,7 +15,7 @@ import clc from 'cli-color';
 
 const FILE_DIR = 'resource';
 
-const {filePath} = parseArgs();
+const {filePath, endPoint, bucket} = parseArgs();
 
 if (!filePath) {
     console.error(clc.red('ERR!: No file path specified'));
@@ -21,7 +23,7 @@ if (!filePath) {
 }
 
 const s3Client = new S3({
-    endpoint: 'https://sgp1.digitaloceanspaces.com',
+    endpoint: endPoint,
     region: 'us-east-1', // this SDK requires the region to be us-east-1, an AWS region name
     credentials: {
         accessKeyId: process.env.DO_KEY_ID,
@@ -30,7 +32,7 @@ const s3Client = new S3({
 });
 
 const bucketParams = {
-    Bucket: 'openblock',
+    Bucket: bucket,
     Key: `${FILE_DIR}/${path.basename(filePath)}`,
     Body: fs.createReadStream(filePath),
     ACL: 'public-read'

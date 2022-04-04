@@ -1,6 +1,6 @@
 {
   "name": "openblock-resource-cli",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "External resources cli tools for OpenBlock projects",
   "main": "",
   "bin": {
@@ -16,7 +16,7 @@
     "test:opt-size": "node bin/optimize-size.js --dir=external-resources",
     "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.2",
     "test:upload-releaseInfo": "node bin/upload-latest-release-info.mjs --repo=openblockcc/external-resources-v2 --endPoint=https://sgp1.digitaloceanspaces.com --bucket=openblock",
-    "test:upload-file": "node bin/upload-file.mjs --filePath=test.zip",
+    "test:upload-file": "node bin/upload-file.mjs --filePath=test.zip --endPoint=https://sgp1.digitaloceanspaces.com --bucket=openblock",
     "test:i18n-extract": "node i18n/extract-format-message.js  --dir=external-resources",
     "test:i18n-push": "node i18n/push-format-message.js --dir=external-resources",
     "test:i18n-update": "node i18n/update-translations.js  --dir=external-resources",
