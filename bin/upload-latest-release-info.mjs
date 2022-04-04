@@ -9,7 +9,7 @@
  */
 import fetch from 'node-fetch';
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
-const parseArgs = require('../src/parseArgs');
+import parseArgs from '../src/parseArgs.js';
 
 const {repo, endPoint, bucket} = parseArgs();
 

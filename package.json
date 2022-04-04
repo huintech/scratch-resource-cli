@@ -1,6 +1,6 @@
 {
   "name": "openblock-resource-cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "External resources cli tools for OpenBlock projects",
   "main": "",
   "bin": {
