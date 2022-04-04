@@ -18,8 +18,13 @@ const parseArgs = require('../src/parseArgs');
 // Extensions for useful files in lib folder
 const USEFUL_LIB_FILE_EXTENSIONS = ['.c', '.cpp', '.h', '.hpp', '.py'];
 
+// Name for useless files
+const USELESS_FILES = ['library.properties'];
+
 // Useless files or folder names
 const USELESS_FILES_AND_DIR = ['.git', '.github', '.gitignore', 'translations'];
+
+let noMoreFlag = false;
 
 // walkFunc must be async, or return a Promise
 const delUselessLibFilesAndDirs = (err, pathName, dirent) => {
@@ -35,9 +40,16 @@ const delUselessLibFilesAndDirs = (err, pathName, dirent) => {
             }
         });
 
+        USELESS_FILES.forEach(name => {
+            if (dirent.name === name) {
+                match = true;
+            }
+        });
+
         if (!match) {
             fs.remove(pathName, e => {
                 if (e) throw e;
+                noMoreFlag = false;
                 console.log(`DELETED ${pathName}`);
             });
         }
@@ -49,6 +61,7 @@ const delUselessLibFilesAndDirs = (err, pathName, dirent) => {
             if (!files.length) {
                 fs.remove(pathName, rme => {
                     if (rme) throw rme;
+                    noMoreFlag = false;
                     console.log(`DELETED ${pathName}`);
                 });
             }
@@ -77,6 +90,15 @@ const delUselessFilesAndDirs = dir => new Promise(resolve => {
     });
 });
 
+const delUselessLibFilesAndDirsUntillNoMore = dir => {
+    if (!noMoreFlag) {
+        noMoreFlag = true;
+        return Walk.walk(dir, delUselessLibFilesAndDirs)
+            .then(() => delUselessLibFilesAndDirsUntillNoMore(dir));
+    }
+    return Promise.resolve();
+};
+
 const {dir} = parseArgs();
 
 let workDir;
@@ -86,10 +108,7 @@ if (dir) {
     workDir = './';
 }
 
-// run three times to make sure all empty dirs are deleted
-Walk.walk(workDir, delUselessLibFilesAndDirs)
-    .then(() => Walk.walk(workDir, delUselessLibFilesAndDirs))
-    .then(() => Walk.walk(workDir, delUselessLibFilesAndDirs))
+delUselessLibFilesAndDirsUntillNoMore(workDir)
     .then(() => delUselessFilesAndDirs(workDir))
     .then(() => {
         console.log('Complete optimization');
