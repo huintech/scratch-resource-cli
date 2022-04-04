@@ -7,6 +7,8 @@ const parseArgs = () => {
     let cdn;
     let strict;
     let filePath;
+    let endPoint;
+    let bucket;
 
     for (const arg of scriptArgs) {
         const dirSplit = arg.split(/--dir(\s+|=)/);
@@ -33,8 +35,17 @@ const parseArgs = () => {
         if (filePathSplit[1] === '=') {
             filePath = filePathSplit[2];
         }
+        const endPointSplit = arg.split(/--endPoint(\s+|=)/);
+        if (endPointSplit[1] === '=') {
+            endPoint = endPointSplit[2];
+        }
+        const bucketSplit = arg.split(/--bucket(\s+|=)/);
+        if (bucketSplit[1] === '=') {
+            bucket = bucketSplit[2];
+        }
+
     }
-    return {dir, version, repo, cdn, strict, filePath};
+    return {dir, version, repo, cdn, strict, filePath, endPoint, bucket};
 };
 
 module.exports = parseArgs;

@@ -26,4 +26,7 @@ Provide some cli tools for resource translation and pre-process before release.
 - Release tools
 
   - **upload-releaseInfo** used to fetch latest release info and upload it to digital ocean spaces. Used in updates in China.
+
+    eg: `upload-releaseInfo --repo=openblockcc/external-resources-v2 --endPoint=https://sgp1.digitaloceanspaces.com --bucket=openblock`
+
   - **upload-file** used to upload a file to digital ocean spaces. Used in updates in China.

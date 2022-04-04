@@ -3,16 +3,20 @@
 /**
  * @fileoverview
  * Fetch the latest release info and upload it to digital ocean spaces.
+ * use --repo to specify the repo of github repository, e.g: --repo=openblockcc/external-resources-v2
+ * use --endPoint to specify address of digital ocean spaces, e.g: --endPoint=https://sgp1.digitaloceanspaces.com
+ * use --bucket to specify the bucket name, e.g: --bucket=openblock
  */
 import fetch from 'node-fetch';
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
-// import {Buffer} from 'buffer';
+const parseArgs = require('../src/parseArgs');
+
+const {repo, endPoint, bucket} = parseArgs();
 
 const FILE_PATH = 'resource/latestRelease.json';
-const REPO = 'openblockcc/external-resources-v2';
 
 const s3Client = new S3({
-    endpoint: 'https://sgp1.digitaloceanspaces.com',
+    endpoint: endPoint,
     region: 'us-east-1', // this SDK requires the region to be us-east-1, an AWS region name
     credentials: {
         accessKeyId: process.env.DO_KEY_ID,
@@ -21,14 +25,14 @@ const s3Client = new S3({
 });
 
 const bucketParams = content => ({
-    Bucket: 'openblock',
+    Bucket: bucket,
     Key: FILE_PATH,
     Body: Buffer.from(content, 'utf8'),
     ACL: 'public-read'
 });
 
 const getLatest = () => {
-    const url = `https://api.github.com/repos/${REPO}/releases/latest`;
+    const url = `https://api.github.com/repos/${repo}/releases/latest`;
 
     return fetch(url)
         .then(res => res.json());
