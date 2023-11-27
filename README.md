@@ -1,4 +1,4 @@
-# openblock-resource-cli
+# scratch-resource-cli
 
 [![Publish npm package](https://github.com/openblockcc/openblock-resource-cli/actions/workflows/publish.yml/badge.svg)](https://github.com/openblockcc/openblock-resource-cli/actions/workflows/publish.yml)
 ![GitHub](https://img.shields.io/github/license/openblockcc/openblock-resource-cli)

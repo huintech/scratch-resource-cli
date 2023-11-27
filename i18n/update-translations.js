@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const transifex = require('transifex');
 const Walk = require('@root/walk');
-const locales = require('openblock-l10n').default;
+const locales = require('scratch-arduino-l10n').default;
 const {validateBlocksTranslations, flattenJson, validateTranslations} = require('./validate-tx-data');
 const parseArgs = require('../src/parseArgs');
 
@@ -28,7 +28,7 @@ if (!process.env.TX_TOKEN) {
 }
 
 // Globals
-const PROJECT = 'openblock-resources';
+const PROJECT = 'scratch-resources';
 const INTERFACE_RESOURCE = 'interface';
 const BLOCKS_RESOURCE = 'blocks';
 const MODE = {mode: 'reviewed'};
