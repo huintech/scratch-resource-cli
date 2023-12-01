@@ -34,7 +34,8 @@ const runCliSync = cmd => {
     }
 };
 
-const txPushSrc = path.resolve(__dirname, '../node_modules/scratch-arduino-l10n/scripts/tx-push-src.js');
+// const txPushSrc = path.resolve(__dirname, '../node_modules/@huintech/coconut-scratch-l10n/scripts/tx-push-src.js');
+const txPushSrc = path.resolve('', './node_modules/@huintech/coconut-scratch-l10n/scripts/tx-push-src.js');
 const pushBlocksContent = `node ${txPushSrc} scratch-resources blocks ${path.resolve(workDir)}/translations/blocks/en.json`; // eslint-disable-line max-len
 const pushInterfaceContent = `node ${txPushSrc} scratch-resources interface ${path.resolve(workDir)}/translations/interface/en.json`; // eslint-disable-line max-len
 

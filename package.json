@@ -1,6 +1,6 @@
 {
   "name": "@huintech/scratch-resource-cli",
-  "version": "0.8.0",
+  "version": "0.8.4",
   "description": "External resources cli tools for Scratch projects",
   "main": "",
   "bin": {
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test:opt-size": "node bin/optimize-size.js --dir=external-resources",
-    "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.0.2",
+    "test:gen-config": "node bin/gen-config.js --dir=external-resources --version=v0.8.0",
     "test:upload-releaseInfo": "node bin/upload-latest-release-info.mjs --repo=huintech/external-resources-v2 --endPoint=https://sgp1.digitaloceanspaces.com --bucket=openblock",
     "test:upload-file": "node bin/upload-file.mjs --filePath=test.zip --endPoint=https://sgp1.digitaloceanspaces.com --bucket=openblock",
     "test:i18n-extract": "node i18n/extract-format-message.js  --dir=external-resources",
@@ -25,13 +25,13 @@
   },
   "author": "coconut",
   "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/huintech/scratch-resource-cli.git"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
-    },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huintech/scratch-resource-cli.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.53.1",
     "@root/walk": "^1.1.0",
@@ -43,7 +43,8 @@
     "hash-files": "^1.1.1",
     "node-fetch": "^3.2.1",
     "rimraf": "^3.0.2",
-    "transifex": "^1.6.6"
+    "transifex": "^1.6.6",
+    "@huintech/coconut-scratch-l10n": "0.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

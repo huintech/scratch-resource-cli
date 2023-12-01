@@ -12,7 +12,8 @@ const fs = require('fs');
 const path = require('path');
 const transifex = require('transifex');
 const Walk = require('@root/walk');
-const locales = require('scratch-arduino-l10n').default;
+// const locales = require('scratch-arduino-l10n').default;
+const locales = require('@huintech/coconut-scratch-l10n').default;
 const {validateBlocksTranslations, flattenJson, validateTranslations} = require('./validate-tx-data');
 const parseArgs = require('../src/parseArgs');
 
